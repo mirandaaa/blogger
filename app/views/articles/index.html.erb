@@ -1,11 +1,14 @@
 <h1> All Articles </h1>
-<ul id="articles">
-  <% @articles.each do |article| %>
-  <li>
-    <%= link_to article.title, article_path(article), class: 'article_title', id: "article_#{article.id}" %>
-  </li>
-  <% end %>
-</ul>
+
+<% @articles_by_month.sort.reverse.each do |month, articles| %>
+	<h3><%= month.strftime("%B %Y") %></h3>
+	<ul>
+		<% articles.reverse.each do |article| %>
+		<li><%= link_to article.title, article_path(article) %></li>
+		<% end %>
+	</ul>
+	<% end %>
+
 <% if logged_in? %>
 <%= link_to "Create a New Article", new_article_path, class: "new_article" %>
 <% end %>

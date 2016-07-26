@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @articles_by_month = @articles.group_by { |article| article.created_at.beginning_of_month }
   end
 
   def show
