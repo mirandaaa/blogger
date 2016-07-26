@@ -1,8 +1,8 @@
 <h1> <%= @article.title %> </h1>
 <% if @article.image.exists? %>
-  <p ><%= image_tag @article.image.url(:medium) %> </p>
+  <%= image_tag @article.image.url(:medium), class: 'img-center' %>
 <% end %>
-<p> <%= @article.body %> </p>
+<p> <%= simple_format h @article.body %> </p>
 <br />
 <p>
   Tags:
