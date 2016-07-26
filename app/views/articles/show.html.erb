@@ -1,4 +1,7 @@
 <h1> <%= @article.title %> </h1>
+<% if @article.image.exists? %>
+  <p ><%= image_tag @article.image.url(:medium) %> </p>
+<% end %>
 <p> <%= @article.body %> </p>
 <br />
 <p>
