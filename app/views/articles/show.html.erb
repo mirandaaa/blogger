@@ -1,23 +1,23 @@
-<h1> <%= @article.title %> </h1>
-<% if @article.image.exists? %>
-  <%= image_tag @article.image.url(:medium), class: 'img-center' %>
+<h1> <%= article.title %> </h1>
+<% if article.image.exists? %>
+  <%= image_tag article.image.url(:medium), class: 'img-center' %>
 <% end %>
-<p> <%= simple_format h @article.body %> </p>
+<p> <%= simple_format h article.body %> </p>
 <br />
 <p>
   Tags:
-  <% @article.tags.each do |tag| %>
+  <% article.tags.each do |tag| %>
     <%= link_to tag.name, tag_path(tag) %>
   <% end %>
 </p>
 <br />
-<h3> Comments (<%= @article.comments.size %>)</h3>
-<%= render partial: 'articles/comment', collection: @article.comments %>
+<h3> Comments (<%= article.comments.size %>)</h3>
+<%= render partial: 'articles/comment', collection: article.comments %>
 <%= render partial: 'comments/form' %>
 <br /><br />
 <% if logged_in? %>
-<%= link_to "Edit", edit_article_path(@article) %> &nbsp; | &nbsp;
-<%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
+<%= link_to "Edit", edit_article_path(article) %> &nbsp; | &nbsp;
+<%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Really delete the article?"} %>
 <br />
 <% end %>
 <%= link_to "<< Back to Articles List", articles_path %>
