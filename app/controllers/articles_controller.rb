@@ -2,18 +2,20 @@ class ArticlesController < ApplicationController
   include ArticlesHelper
 
   before_filter :require_login, except: [:index, :show]
+  helper_method :articles_by_month
 
   def index
     @articles = Article.all
-    @articles_by_month = @articles.group_by { |article| article.created_at.beginning_of_month }
+  end
+
+  def articles_by_month
+    @articles.group_by { |article| article.created_at.beginning_of_month }
   end
 
   def show
     @article = Article.find(params[:id])
-
     @comment = Comment.new
     @comment.article_id = @article.id
-
   end
 
   def new

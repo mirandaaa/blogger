@@ -1,6 +1,6 @@
 <h1> All Articles </h1>
 
-<% @articles_by_month.sort.reverse.each do |month, articles| %>
+<% articles_by_month.sort.reverse.each do |month, articles| %>
 	<h3><%= month.strftime("%B %Y") %></h3>
 	<ul>
 		<% articles.reverse.each do |article| %>
